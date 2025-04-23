@@ -1,0 +1,38 @@
+.perspective {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+ 
+  .login-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 100%;
+  }
+  .log-reg-link{
+    cursor: pointer;
+  }

@@ -1,0 +1,265 @@
+<div class="flex items-center justify-center bg-gray-100 login-container min-h-screen pb-30">
+  <div class="w-full max-w-md perspective">
+    <div
+      [class.rotate-y-180]="isFlipped"
+      class="transition-transform duration-700 transform-style-preserve-3d relative w-full h-[600px]"
+    >
+      <!-- FRONT: Login -->
+      <div
+        class="absolute w-full backface-hidden bg-white rounded-xl shadow-lg p-6 mt-10"
+      >
+        <h2 class="text-2xl font-semibold text-center mb-4">Login</h2>
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" action="#" method="POST">
+            <div>
+              <label
+                for="email"
+                class="block text-sm/6 font-medium text-gray-900"
+                >Email address</label
+              >
+              <div class="mt-2">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <label
+                  for="password"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Password</label
+                >
+                <div class="text-sm">
+                  <a
+                    href="#"
+                    class="font-semibold text-indigo-600 hover:text-indigo-500"
+                    >Forgot password?</a
+                  >
+                </div>
+              </div>
+              <div class="mt-2">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
+        </div>
+        <p class="text-sm mt-4 text-center">
+          New user?
+          <button (click)="flipCard()" class="text-blue-600 underline">
+            Register here
+          </button>
+        </p>
+      </div>
+
+      <!-- BACK: Register -->
+      <div
+        class="absolute w-full backface-hidden bg-white rounded-xl shadow-lg p-6 rotate-y-180 overflow-auto mt-10"
+      >
+        <h2 class="text-2xl font-semibold text-center mb-4">Register</h2>
+        <form>
+          <!-- Doctor Form -->
+          <div *ngIf="userRole === 'doctor'">
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <form class="space-y-6" action="#" method="POST">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Email address</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      autocomplete="email"
+                      required
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between">
+                    <label
+                      for="password"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Password</label
+                    >
+                    <div class="text-sm">
+                      <a
+                        href="#"
+                        class="font-semibold text-indigo-600 hover:text-indigo-500"
+                        >Forgot password?</a
+                      >
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      autocomplete="current-password"
+                      required
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Patient Form -->
+          <div
+            *ngIf="userRole === 'patient'"
+            class="w-full max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md font-[Poppins]"
+          >
+
+            <!-- Row 1: First Name + Last Name -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >First Name</label
+                >
+                <input
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Jane"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Last Name</label
+                >
+                <input
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Email + Password -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="example@mail.com"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+
+            <!-- Row 3: Confirm Password + Gender -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Confirm Password</label
+                >
+                <input
+                  type="password"
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Gender</label
+                >
+                <select
+                  class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 4: Age -->
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-700">Age</label>
+              <input
+                type="number"
+                min="0"
+                class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="25"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-700">Role</label>
+
+              <select
+                class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                [(ngModel)]="userRole"
+                name="userRole"
+              >
+                <option value="" disabled selected>Select role</option>
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+              </select>
+            </div>
+
+            <button
+              class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-300"
+            >
+              Register
+            </button>
+
+            <p class="text-sm mt-4 text-center">
+              Already have an account?
+              <button (click)="flipCard()" class="text-blue-600 underline">
+                Login
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
