@@ -1,15 +1,40 @@
 <nav class="flex items-center justify-between px-6 py-4 bg-white shadow w-full">
-    <img src="" alt="logo" class="h-6 w-6" />
-    <div class="flex items-center justify-center gap-4">
-      <a href="#" class="text-sm font-medium text-indigo-600">Home</a>
-      <a href="#" class="text-sm">Doctors</a>
-      <a href="#" class="text-sm">Specialities</a>
-      <a href="#" class="text-sm">Book Appointment</a>
-      <a href="#" class="text-sm">Contact</a>
-    </div>
-    <div class="flex items-center gap-2">
-      <button class="border border-gray-300 text-gray-700 text-sm px-3 py-1.5 rounded-md font-medium hover:bg-gray-100 transition" routerLink="/auth">
+  <img src="logo.png" alt="logo" class="h-6 w-6" />
+  <div class="flex items-center justify-center gap-4">
+    <!-- Always show Home, Doctors, Specialities for both doctor and patient -->
+    <ng-container *ngIf="!role">
+      <a routerLink="/home" class="text-sm font-medium text-indigo-600">Home</a>
+      <a routerLink="/contact-us" class="text-sm">Doctors</a>
+      <a routerLink="/about-us" class="text-sm">Specialities</a>
+    </ng-container>
+
+    <!-- Show these links if the user is logged in as a patient -->
+<ng-container *ngIf="role === 'patient'">
+  <a routerLink="/book-appointment" class="text-sm">Book Appointment</a>
+  <a routerLink="/my-profile" class="text-sm">My Profile</a>
+</ng-container>
+<ng-container *ngIf="role === 'doctor'">
+  <a routerLink="/my-appointments" class="text-sm">My Appointments</a>
+  <a routerLink="/doctor-dashboard" class="text-sm">Doctor Dashboard</a>
+</ng-container>
+
+    <!-- Always show Contact link -->
+    <a href="#" class="text-sm">Contact</a>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <!-- If the user is logged in, show Logout button -->
+    <ng-container *ngIf="role">
+      <button (click)="onLogout()" class="border border-gray-300 text-gray-700 text-sm px-3 py-1.5 rounded-md font-medium hover:bg-gray-100 transition">
+        Logout
+      </button>
+    </ng-container>
+
+    <!-- If the user is not logged in, show Login/Signup button -->
+    <ng-container *ngIf="!role">
+      <button class="border border-gray-300 text-gray-700 text-sm px-3 py-1.5 rounded-md font-medium hover:bg-gray-100 transition" routerLink="/auth/login">
         Login / Signup
       </button>
-    </div>
-  </nav>
+    </ng-container>
+  </div>
+</nav>

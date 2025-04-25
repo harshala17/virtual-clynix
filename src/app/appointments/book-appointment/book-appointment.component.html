@@ -1,0 +1,137 @@
+<div class=" w-full bg-white rounded-xl shadow-lg p-6 mt-10">
+  <h2 class="text-2xl font-semibold text-center mb-4">Book Appointment</h2>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="appointmentForm">
+      <!-- Skin Infection and Upload Reports side by side -->
+      <div class="flex space-x-4">
+        <div class="w-1/2">
+          <label for="skinInfection" class="block text-sm/6 font-medium text-gray-900">Skin Infection</label>
+          <div class="mt-2">
+            <input
+              type="file"
+              formControlName="skinInfection"
+              required
+              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+        <div class="w-1/2">
+          <label for="uploadReports" class="block text-sm/6 font-medium text-gray-900">Upload Reports</label>
+          <div class="mt-2">
+            <input
+              type="file"
+              formControlName="uploadReports"
+              required
+              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Consultation Type (Audio and Video as radio buttons) -->
+      <div>
+        <label class="block text-sm/6 font-medium text-gray-900">Consultation Type</label>
+        <div class="mt-2 flex space-x-6">
+          <div>
+            <input
+              type="radio"
+              formControlName="consultationType"
+              value="audio"
+              id="audio"
+              class="mr-2"
+            />
+            <label for="audio" class="text-sm text-gray-900">Audio</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              formControlName="consultationType"
+              value="video"
+              id="video"
+              class="mr-2"
+            />
+            <label for="video" class="text-sm text-gray-900">Video</label>
+          </div>
+        </div>
+      </div>
+
+    <!-- Appointment Date and Time side by side -->
+<div class="flex space-x-4">
+  <!-- Appointment Date -->
+  <div class="w-1/2">
+    <label for="date" class="block text-sm/6 font-medium text-gray-900">Appointment Date</label>
+    <div class="mt-2">
+      <input
+        type="date"
+        formControlName="date"
+        required
+        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+      />
+    </div>
+  </div>
+
+  <!-- Appointment Time -->
+  <div class="w-1/2">
+    <label for="time" class="block text-sm/6 font-medium text-gray-900">Appointment Time</label>
+    <div class="mt-2">
+      <input
+        type="time"
+        formControlName="time"
+        required
+        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+      />
+    </div>
+  </div>
+</div>
+
+
+      <!-- Full Name -->
+      <div>
+        <label for="name" class="block text-sm/6 font-medium text-gray-900">Full Name</label>
+        <div class="mt-2">
+          <input
+            type="text"
+            formControlName="name"
+            required
+            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <!-- Contact Number -->
+      <div>
+        <label for="contactNo" class="block text-sm/6 font-medium text-gray-900">Contact Number</label>
+        <div class="mt-2">
+          <input
+            type="tel"
+            formControlName="contactNo"
+            required
+            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <!-- Disease Symptoms -->
+      <div>
+        <label for="symptoms" class="block text-sm/6 font-medium text-gray-900">Disease Symptoms</label>
+        <div class="mt-2">
+          <textarea
+            formControlName="symptoms"
+            required
+            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button
+          type="submit"
+          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Book Appointment
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

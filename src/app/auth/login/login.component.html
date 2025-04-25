@@ -10,7 +10,7 @@
       >
         <h2 class="text-2xl font-semibold text-center mb-4">Login</h2>
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-6" action="#" method="POST">
+          <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
             <div>
               <label
                 for="email"
@@ -20,8 +20,7 @@
               <div class="mt-2">
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  formControlName="email"
                   autocomplete="email"
                   required
                   class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -47,8 +46,7 @@
               <div class="mt-2">
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  formControlName="password"
                   autocomplete="current-password"
                   required
                   class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -79,54 +77,77 @@
         class="absolute w-full backface-hidden bg-white rounded-xl shadow-lg p-6 rotate-y-180 overflow-auto mt-10"
       >
         <h2 class="text-2xl font-semibold text-center mb-4">Register</h2>
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
           <!-- Doctor Form -->
-          <div *ngIf="userRole === 'doctor'">
+          <div *ngIf="role === 'doctor'">
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <form class="space-y-6" action="#" method="POST">
+                
                 <div>
                   <label
-                    for="email"
+                    for="file"
                     class="block text-sm/6 font-medium text-gray-900"
-                    >Email address</label
+                    >Upload your profile photo</label
                   >
                   <div class="mt-2">
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      autocomplete="email"
+                      type="file"
+                      formControlName="profile_photo"
+                      id="profile_photo"
+                      autocomplete="profile_photo"
                       required
                       class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     />
                   </div>
                 </div>
-
                 <div>
-                  <div class="flex items-center justify-between">
-                    <label
-                      for="password"
-                      class="block text-sm/6 font-medium text-gray-900"
-                      >Password</label
-                    >
-                    <div class="text-sm">
-                      <a
-                        href="#"
-                        class="font-semibold text-indigo-600 hover:text-indigo-500"
-                        >Forgot password?</a
-                      >
-                    </div>
-                  </div>
+                  <label
+                    for="file"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Upload your Qualification Certificate</label
+                  >
                   <div class="mt-2">
                     <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      autocomplete="current-password"
+                      type="file"
+                      formControlName="qualification_certification"
+                      id="qualification_certification"
+                      autocomplete="qualification_certification"
                       required
                       class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     />
                   </div>
+                </div>
+                <div>
+                  <label
+                    for="file"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Upload your Liecence</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="file"
+                      formControlName="liecence"
+                      id="liecence"
+                      autocomplete="liecence"
+                      required
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>         
+                
+                <div class="mt-2">
+                  <label class="block text-sm font-medium text-gray-700">Choose your category</label>
+    
+                  <select
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   
+                    formControlName="category"
+                  >
+                    <option value="" disabled selected>Select category</option>
+                    <option value="patient">Physiscian</option>
+                    <option value="doctor">Cardiologist</option>
+                    <option value="doctor">Urology</option>
+                  </select>
                 </div>
 
                 <div>
@@ -143,7 +164,7 @@
 
           <!-- Patient Form -->
           <div
-            *ngIf="userRole === 'patient'"
+            *ngIf="role === 'patient'"
             class="w-full max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md font-[Poppins]"
           >
 
@@ -155,7 +176,7 @@
                 >
                 <input
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Jane"
+                  placeholder="Jane" formControlName="firstName"
                 />
               </div>
               <div>
@@ -164,7 +185,7 @@
                 >
                 <input
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Doe"
+                  placeholder="Doe" formControlName="lastName"
                 />
               </div>
             </div>
@@ -178,7 +199,7 @@
                 <input
                   type="email"
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="example@mail.com"
+                  placeholder="example@mail.com" formControlName="email"
                 />
               </div>
               <div>
@@ -188,7 +209,7 @@
                 <input
                   type="password"
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="••••••••"
+                  placeholder="••••••••" formControlName="password"
                 />
               </div>
             </div>
@@ -202,7 +223,7 @@
                 <input
                   type="password"
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="••••••••"
+                  placeholder="••••••••" formControlName="confirmPassword"
                 />
               </div>
               <div>
@@ -211,6 +232,7 @@
                 >
                 <select
                   class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  formControlName="gender"
                 >
                   <option value="">Select</option>
                   <option>Male</option>
@@ -227,23 +249,18 @@
                 type="number"
                 min="0"
                 class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="25"
+                placeholder="25" formControlName="age"
               />
             </div>
-
             <div class="mt-4">
               <label class="block text-sm font-medium text-gray-700">Role</label>
-
-              <select
-                class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                [(ngModel)]="userRole"
-                name="userRole"
-              >
-                <option value="" disabled selected>Select role</option>
+              <select class="mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" formControlName="role" >
                 <option value="patient">Patient</option>
                 <option value="doctor">Doctor</option>
               </select>
             </div>
+
+            
 
             <button
               class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-300"

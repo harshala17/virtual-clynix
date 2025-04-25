@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "john123",
+      "password": "pass123",
+      "role": "patient",
+      "email": "john@gmail.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "confirmPassword": "pass123",
+      "gender": "female",
+      "age": "20"
+    },
+    {
+      "id": 2,
+      "username": "drsmith",
+      "password": "docpass123",
+      "role": "doctor",
+      "email": "smith@gmail.com",
+      "firstName": "Sarah",
+      "lastName": "Smith",
+      "speciality": "Dermatologist",
+      "licence": "LIC123456",
+      "contact": "9876543210",
+      "address": "123 Main Street"
+    },
+    {
+      "id": "cf7f",
+      "role": "patient",
+      "firstName": "seema",
+      "lastName": "sharma",
+      "email": "seema@gmail.com",
+      "password": "seema123",
+      "confirmPassword": "seema123",
+      "gender": "Female",
+      "age": 24
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "doctorId": 2,
+      "date": "2025-04-27",
+      "time": "10:00 AM",
+      "city": "Fresno",
+      "zipcode": "93722",
+      "symptoms": "Skin rash",
+      "consultationType": "Video",
+      "contact": "9876543210",
+      "uploadReports": "report1.pdf",
+      "skinInfectionPhoto": "skin1.png"
+    }
+  ]
+}

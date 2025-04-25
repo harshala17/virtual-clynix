@@ -1,0 +1,35 @@
+<!-- src/app/doctor-dashboard/doctor-dashboard.component.html -->
+<div class="min-h-screen bg-gray-100 p-6 font-poppins">
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Sidebar -->
+      <aside class="bg-white p-4 rounded-xl shadow h-fit">
+        <h3 class="font-semibold text-lg mb-4">Navigation</h3>
+        <ul class="space-y-2 text-sm">
+          <li class="hover:text-indigo-600 cursor-pointer">Appointments</li>
+          <li class="hover:text-indigo-600 cursor-pointer">Patients</li>
+          <li class="hover:text-indigo-600 cursor-pointer">Settings</li>
+        </ul>
+      </aside>
+      <!-- Main Content -->
+      <main class="md:col-span-2">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Today's Appointments</h2>
+        <div class="bg-white p-4 rounded-xl shadow space-y-3">
+          <div class="flex justify-between items-center border-b pb-2">
+            <div>
+              <p class="font-medium">John Doe</p>
+              <p class="text-sm text-gray-500">10:30 AM</p>
+            </div>
+            <button class="btn-sm bg-green-500 text-white rounded px-3 py-1">Join</button>
+          </div>
+          <div class="flex justify-between items-center border-b pb-2">
+            <div>
+              <p class="font-medium">Jane Smith</p>
+              <p class="text-sm text-gray-500">11:15 AM</p>
+            </div>
+            <button class="btn-sm bg-green-500 text-white rounded px-3 py-1">Join</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
